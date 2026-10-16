@@ -503,6 +503,11 @@
       real(C_DOUBLE), dimension(*), intent(out) :: out
     end subroutine fftw_execute_r2r
     
+    type(C_PTR) function fftw_copy_plan(p) bind(C, name='fftw_copy_plan')
+      import
+      type(C_PTR), value :: p
+    end function fftw_copy_plan
+    
     subroutine fftw_destroy_plan(p) bind(C, name='fftw_destroy_plan')
       import
       type(C_PTR), value :: p
@@ -1114,6 +1119,11 @@
       real(C_FLOAT), dimension(*), intent(inout) :: in
       real(C_FLOAT), dimension(*), intent(out) :: out
     end subroutine fftwf_execute_r2r
+    
+    type(C_PTR) function fftwf_copy_plan(p) bind(C, name='fftwf_copy_plan')
+      import
+      type(C_PTR), value :: p
+    end function fftwf_copy_plan
     
     subroutine fftwf_destroy_plan(p) bind(C, name='fftwf_destroy_plan')
       import

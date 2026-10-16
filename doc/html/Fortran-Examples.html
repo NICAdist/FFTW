@@ -1,11 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual is for FFTW
-(version 3.3.10, 10 December 2020).
+(version 3.3.11, 18 April 2026).
 
-Copyright (C) 2003 Matteo Frigo.
+Copyright © 2003 Matteo Frigo.
 
-Copyright (C) 2003 Massachusetts Institute of Technology.
+Copyright © 2003 Massachusetts Institute of Technology.
 
 Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -20,16 +23,15 @@ Permission is granted to copy and distribute translations of this manual
 into another language, under the above conditions for modified versions,
 except that this permission notice may be stated in a translation
 approved by the Free Software Foundation. -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Fortran Examples (FFTW 3.3.10)</title>
+<title>Fortran Examples (FFTW 3.3.11)</title>
 
-<meta name="description" content="Fortran Examples (FFTW 3.3.10)">
-<meta name="keywords" content="Fortran Examples (FFTW 3.3.10)">
+<meta name="description" content="Fortran Examples (FFTW 3.3.11)">
+<meta name="keywords" content="Fortran Examples (FFTW 3.3.11)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Concept-Index.html" rel="index" title="Concept Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
@@ -38,20 +40,9 @@ approved by the Free Software Foundation. -->
 <link href="FFTW-Execution-in-Fortran.html" rel="prev" title="FFTW Execution in Fortran">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 
@@ -59,18 +50,19 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Fortran-Examples"></span><div class="header">
+<div class="section-level-extent" id="Fortran-Examples">
+<div class="nav-panel">
 <p>
 Next: <a href="Wisdom-of-Fortran_003f.html" accesskey="n" rel="next">Wisdom of Fortran?</a>, Previous: <a href="FFTW-Execution-in-Fortran.html" accesskey="p" rel="prev">FFTW Execution in Fortran</a>, Up: <a href="Calling-FFTW-from-Legacy-Fortran.html" accesskey="u" rel="up">Calling FFTW from Legacy Fortran</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Fortran-Examples-1"></span><h3 class="section">8.4 Fortran Examples</h3>
+<h3 class="section" id="Fortran-Examples-1"><span>8.4 Fortran Examples<a class="copiable-link" href="#Fortran-Examples-1"> &para;</a></span></h3>
 
 <p>In C, you might have something like the following to transform a
 one-dimensional complex array:
 </p>
 <div class="example">
-<pre class="example">        fftw_complex in[N], out[N];
+<pre class="example-preformatted">        fftw_complex in[N], out[N];
         fftw_plan plan;
 
         plan = fftw_plan_dft_1d(N,in,out,FFTW_FORWARD,FFTW_ESTIMATE);
@@ -81,7 +73,7 @@ one-dimensional complex array:
 <p>In Fortran, you would use the following to accomplish the same thing:
 </p>
 <div class="example">
-<pre class="example">        double complex in, out
+<pre class="example-preformatted">        double complex in, out
         dimension in(N), out(N)
         integer*8 plan
 
@@ -89,40 +81,40 @@ one-dimensional complex array:
         call dfftw_execute_dft(plan, in, out)
         call dfftw_destroy_plan(plan)
 </pre></div>
-<span id="index-dfftw_005fplan_005fdft_005f1d"></span>
-<span id="index-dfftw_005fexecute_005fdft-1"></span>
-<span id="index-dfftw_005fdestroy_005fplan"></span>
+<a class="index-entry-id" id="index-dfftw_005fplan_005fdft_005f1d"></a>
+<a class="index-entry-id" id="index-dfftw_005fexecute_005fdft-1"></a>
+<a class="index-entry-id" id="index-dfftw_005fdestroy_005fplan"></a>
 
 <p>Notice how all routines are called as Fortran subroutines, and the
-plan is returned via the first argument to <code>dfftw_plan_dft_1d</code>.
-Notice also that we changed <code>fftw_execute</code> to
-<code>dfftw_execute_dft</code> (see <a href="FFTW-Execution-in-Fortran.html">FFTW Execution in Fortran</a>).  To do
-the same thing, but using 8 threads in parallel (see <a href="Multi_002dthreaded-FFTW.html">Multi-threaded FFTW</a>), you would simply prefix these calls with:
+plan is returned via the first argument to <code class="code">dfftw_plan_dft_1d</code>.
+Notice also that we changed <code class="code">fftw_execute</code> to
+<code class="code">dfftw_execute_dft</code> (see <a class="pxref" href="FFTW-Execution-in-Fortran.html">FFTW Execution in Fortran</a>).  To do
+the same thing, but using 8 threads in parallel (see <a class="pxref" href="Multi_002dthreaded-FFTW.html">Multi-threaded FFTW</a>), you would simply prefix these calls with:
 </p>
 <div class="example">
-<pre class="example">        integer iret
+<pre class="example-preformatted">        integer iret
         call dfftw_init_threads(iret)
         call dfftw_plan_with_nthreads(8)
 </pre></div>
-<span id="index-dfftw_005finit_005fthreads"></span>
-<span id="index-dfftw_005fplan_005fwith_005fnthreads"></span>
+<a class="index-entry-id" id="index-dfftw_005finit_005fthreads"></a>
+<a class="index-entry-id" id="index-dfftw_005fplan_005fwith_005fnthreads"></a>
 
-<p>(You might want to check the value of <code>iret</code>: if it is zero, it
+<p>(You might want to check the value of <code class="code">iret</code>: if it is zero, it
 indicates an unlikely error during thread initialization.)
 </p>
 <p>To check the number of threads currently being used by the planner, you
 can do the following:
 </p>
 <div class="example">
-<pre class="example">        integer iret
+<pre class="example-preformatted">        integer iret
         call dfftw_planner_nthreads(iret)
 </pre></div>
-<span id="index-dfftw_005fplanner_005fnthreads"></span>
+<a class="index-entry-id" id="index-dfftw_005fplanner_005fnthreads"></a>
 
 <p>To transform a three-dimensional array in-place with C, you might do:
 </p>
 <div class="example">
-<pre class="example">        fftw_complex arr[L][M][N];
+<pre class="example-preformatted">        fftw_complex arr[L][M][N];
         fftw_plan plan;
 
         plan = fftw_plan_dft_3d(L,M,N, arr,arr,
@@ -134,7 +126,7 @@ can do the following:
 <p>In Fortran, you would use this instead:
 </p>
 <div class="example">
-<pre class="example">        double complex arr
+<pre class="example-preformatted">        double complex arr
         dimension arr(L,M,N)
         integer*8 plan
 
@@ -143,7 +135,7 @@ can do the following:
         call dfftw_execute_dft(plan, arr, arr)
         call dfftw_destroy_plan(plan)
 </pre></div>
-<span id="index-dfftw_005fplan_005fdft_005f3d"></span>
+<a class="index-entry-id" id="index-dfftw_005fplan_005fdft_005f3d"></a>
 
 <p>Note that we pass the array dimensions in the &ldquo;natural&rdquo; order in both C
 and Fortran.
@@ -151,7 +143,7 @@ and Fortran.
 <p>To transform a one-dimensional real array in Fortran, you might do:
 </p>
 <div class="example">
-<pre class="example">        double precision in
+<pre class="example-preformatted">        double precision in
         dimension in(N)
         double complex out
         dimension out(N/2 + 1)
@@ -161,14 +153,14 @@ and Fortran.
         call dfftw_execute_dft_r2c(plan, in, out)
         call dfftw_destroy_plan(plan)
 </pre></div>
-<span id="index-dfftw_005fplan_005fdft_005fr2c_005f1d"></span>
-<span id="index-dfftw_005fexecute_005fdft_005fr2c"></span>
+<a class="index-entry-id" id="index-dfftw_005fplan_005fdft_005fr2c_005f1d"></a>
+<a class="index-entry-id" id="index-dfftw_005fexecute_005fdft_005fr2c"></a>
 
 <p>To transform a two-dimensional real array, out of place, you might use
 the following:
 </p>
 <div class="example">
-<pre class="example">        double precision in
+<pre class="example-preformatted">        double precision in
         dimension in(M,N)
         double complex out
         dimension out(M/2 + 1, N)
@@ -178,20 +170,21 @@ the following:
         call dfftw_execute_dft_r2c(plan, in, out)
         call dfftw_destroy_plan(plan)
 </pre></div>
-<span id="index-dfftw_005fplan_005fdft_005fr2c_005f2d"></span>
+<a class="index-entry-id" id="index-dfftw_005fplan_005fdft_005fr2c_005f2d"></a>
 
-<p><strong>Important:</strong> Notice that it is the <em>first</em> dimension of the
+<p><strong class="strong">Important:</strong> Notice that it is the <em class="emph">first</em> dimension of the
 complex output array that is cut in half in Fortran, rather than the
 last dimension as in C.  This is a consequence of the interface routines
 reversing the order of the array dimensions passed to FFTW so that the
 Fortran program can use its ordinary column-major order.
-<span id="index-column_002dmajor-3"></span>
-<span id="index-r2c_002fc2r-multi_002ddimensional-array-format-3"></span>
+<a class="index-entry-id" id="index-column_002dmajor-3"></a>
+<a class="index-entry-id" id="index-r2c_002fc2r-multi_002ddimensional-array-format-3"></a>
 </p>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Wisdom-of-Fortran_003f.html" accesskey="n" rel="next">Wisdom of Fortran?</a>, Previous: <a href="FFTW-Execution-in-Fortran.html" accesskey="p" rel="prev">FFTW Execution in Fortran</a>, Up: <a href="Calling-FFTW-from-Legacy-Fortran.html" accesskey="u" rel="up">Calling FFTW from Legacy Fortran</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Wisdom-of-Fortran_003f.html">Wisdom of Fortran?</a>, Previous: <a href="FFTW-Execution-in-Fortran.html">FFTW Execution in Fortran</a>, Up: <a href="Calling-FFTW-from-Legacy-Fortran.html">Calling FFTW from Legacy Fortran</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

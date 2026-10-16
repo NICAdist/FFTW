@@ -1,3 +1,446 @@
+commit d69d34f078baee4fa38a035634017404cce3e09a
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Sat Apr 18 06:00:21 2026 -0400
+
+    Fix HAVE_SIMD definition (again)
+
+commit ba064bf178c8dce0da5abb62c267d923074a0973
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Sat Apr 18 04:40:42 2026 -0400
+
+    Fix list of SIMD extensions
+
+commit c91f4cee3ee940638f485e15288f46b2c8917893
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Fri Apr 17 21:32:35 2026 -0400
+
+    Missing HAVE_SVE
+
+commit 806fb4153b937f9d76b512aee256cac884424e92
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Fri Apr 17 21:27:01 2026 -0400
+
+    Missing HAVE_NEON => HAVE_SIMD
+    
+    Was causing alignment problems on neon in single precision
+
+commit 52a37ae8d228b8d206648dc905fa8cb6c08b5486
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Fri Apr 17 07:03:09 2026 -0400
+
+    Update TLO contact
+
+commit b5afe8535a673bab63b3f7cedf05f6ca67e55d2e
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Fri Apr 17 06:33:59 2026 -0400
+
+    Libtool doesn't like 11-rc1
+
+commit d27abd5b34f96f8de62b7f19d8fa0d04f4654b84
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Fri Apr 17 06:24:33 2026 -0400
+
+    Get ready for fftw-3.3.11 release
+
+commit 6c8f5c3e620ebc38262cd80ca6f65e9f85783d9e
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Mon Feb 16 12:24:43 2026 -0500
+
+    Fix genfft build for both legacy and modern variants of the num library
+
+commit 7947c101a5b724fe8b9784218388b46d7e247132
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Wed Oct 29 07:20:34 2025 -0400
+
+    Get rid of the dependency on the Unix module
+
+commit adde9bec41206a3d6bbb02bdbf9f64726d7d2009
+Author: luzpaz <luzpaz@users.noreply.github.com>
+Date:   Fri Sep 5 20:44:09 2025 -0400
+
+    Fix various typos (#385)
+    
+    Found via `codespell -q 3 -L aadd,aci,alo,fo,inout,intot,mone,nam,nd,ois,re-use,re-used,re-using,rin,shft,twon`
+
+commit 816722732224231e90e634b5839bb7808cddc6cd
+Merge: 126e3b98 c4b22cdc
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Wed Feb 5 05:55:01 2025 -0500
+
+    Merge pull request #376 from yinshiyou/loongarch-dev
+    
+    Add SIMD optimization for LoongArch
+
+commit c4b22cdc1c5578100d82123ee582e1b0f9832271
+Author: Hao Chen <chenhao@loongson.cn>
+Date:   Sun Oct 8 10:25:54 2023 +0800
+
+    Optimize with madd and msub on LA.
+    
+    The performance of the bench are as follows:
+    ./tests/bench oc32768
+    before: 12510.85 mflops
+    after:  13093.016 mflops
+    
+    Signed-off-by: Hao Chen <chenhao@loongson.cn>
+    Change-Id: Ib1cae1d7d3fc1af914194d3898972ec7600421a0
+
+commit b1e2461e7bb995cbce1b0ff797cbd150e362b656
+Author: Hao Chen <chenhao@loongson.cn>
+Date:   Sun Oct 8 10:26:30 2023 +0800
+
+    Add getticks function on loongarch platform.
+    
+    The performance of the bench are as follows:
+    ./tests/bench oc32768
+    before: 7720.7147 mflops
+    after:  12510.85 mflops
+    
+    Signed-off-by: Hao Chen <chenhao@loongson.cn>
+    Change-Id: I0614fb3be1ba4ab5dd2f5816a0a842faafe0892c
+
+commit 31172a0eefceceee47777723ccad7fdc76f3b1af
+Author: Shiyou Yin <yinshiyou-hf@loongson.cn>
+Date:   Wed Feb 5 11:36:21 2025 +0800
+
+    Add support for LoongArch LASX.
+    
+    LASX is 256-bits SIMD instruction of LoongArch.
+
+commit 6d35004e8dfb767e08d73733fce8d0556ba22f92
+Author: Shiyou Yin <yinshiyou-hf@loongson.cn>
+Date:   Wed Feb 5 09:52:15 2025 +0800
+
+    Add support for LoongArch LSX.
+    
+    LSX is 128-bits SIMD instruction of LoongArch.
+
+commit 126e3b98bb8f49aadb429c4aa1e98d898cad8e0c
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Sun Feb 2 14:28:28 2025 -0500
+
+    Reuse the REPEAT_* macros from simd-maskedsve.h to simplify simd-avx*.h
+
+commit 3df09adbc2b132e486706fee2e040260490be316
+Merge: e62a96aa d46ecddd
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Sat Feb 1 20:34:08 2025 -0500
+
+    Merge pull request #361 from rdolbeau/riscv-cyclecounter
+    
+    Riscv cyclecounter
+
+commit e62a96aa13bcd131f224ee2b8f8deab2a1a69254
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Sat Feb 1 20:28:48 2025 -0500
+
+    Ditch generate_vtw.{c,sh} in favor of preprocessor witchcraft
+    
+    We don't need to generate yet another file, the C preprocessor
+    is good enough.
+
+commit 33dded1e918c7447797156cd7cda5de4e83c4a32
+Merge: 187045ea ff3dfb01
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Sat Feb 1 18:23:26 2025 -0500
+
+    Merge pull request #315 from rdolbeau/arm-sve-clean
+    
+    PR to merge ARM SVE branch
+
+commit d46ecddd6284f0c468ecd8680ce61fa7ee1bff63
+Author: Romain Dolbeau <romain@dolbeau.org>
+Date:   Sun Jul 14 13:10:29 2024 +0000
+
+    rdcycle -> rdtime (rdcycle no longer accessible in user-mode...)
+
+commit c4b5b36d90200d963bce378d1458a6326f35e433
+Author: Romain Dolbeau <romain.dolbeau@european-processor-initiative.eu>
+Date:   Thu Aug 29 05:52:40 2019 -0400
+
+    Add support for the RISC-V 'rdcycle' (and 'rdcycleh' for RV32) instruction(s) as a cycle counter
+
+commit ff3dfb01f038a83ec274ae3a88902ef0fa4de1c5
+Author: Gilles Gouaillardet <gilles@rist.or.jp>
+Date:   Tue Apr 16 15:09:01 2024 +0900
+
+    try building a sample SVE program
+    
+    When configure'd with --enable-sve, try to build a sample SVE program
+    and abort on failure, otherwise configure successes but make will fail.
+
+commit 8cb2fbd8f4623d6c9d66a03f7684781ee9158622
+Author: Romain Dolbeau <romain@dolbeau.org>
+Date:   Mon Mar 4 10:10:14 2024 +0000
+
+    improve VZMULI[j], clean-up old code
+
+commit eefa1b44b279100e7e994d047c4c102131e31cc1
+Author: Romain Dolbeau <romain@dolbeau.org>
+Date:   Fri Mar 5 09:10:15 2021 +0100
+
+    disable USE_UNMASKED_ASSEMBLY by default so it can be reenabled from the command line
+
+commit e3150025ade7e4bc5d6af821ab8e849e48ff6a3e
+Author: Romain Dolbeau <romain@dolbeau.org>
+Date:   Thu Mar 4 13:26:09 2021 +0100
+
+    oups, missing ASM for SP
+
+commit b0bf4c6c20e417486355061e2390577e3055834b
+Author: Romain Dolbeau <romain@dolbeau.org>
+Date:   Wed Sep 9 09:14:04 2020 -0400
+
+    Make some variants based on #define, as their behavior seems to be compiler/hardware dependent, and more tests are needed before settling on some defaults.
+
+commit 332007f250c4ef583d50c38f7535c027c372136f
+Author: Romain Dolbeau <romain@dolbeau.org>
+Date:   Wed Sep 9 08:36:58 2020 -0400
+
+    Experimental change for performance - non-masked ADD/SUB/MUL
+    
+    ADD/SUB/MUL are three-addresses in SVE, but the masked form is only
+    two-adresses. And there's a lot of reuse in FFTW3 (and complex
+    arithmetic). But ACLE/SVE (i.e. intrinsics) don't have the non-masked
+    form :-(
+    So used inline ASM for force the non-masked version to be used.
+    Masked-out lanes should be mostly zero, and are never stored anyway, so
+    computing on them should be fine.
+    
+    This one will be reversed if it's not a performance win.
+
+commit f85c7f7e4d3a043d0a4c41f962292df8d1f78639
+Author: Romain Dolbeau <romain@dolbeau.org>
+Date:   Wed Sep 2 09:19:01 2020 -0400
+
+    Remove test&branch (ovs==0) in STu, replace by masking. Also, improve VBYI.
+
+commit 38ca2c6ebf5ee26d94a373c970d71e458b34a7ed
+Author: Gilles Gouaillardet <gilles@rist.or.jp>
+Date:   Sat Jul 18 16:02:37 2020 +0900
+
+    sve: go brrr
+
+commit 1348189b56a031f455c8db96a963170fb0375755
+Author: Gilles Gouaillardet <gilles@rist.or.jp>
+Date:   Sat Jul 18 15:47:08 2020 +0900
+
+    sve: correctly support negative offsets
+
+commit 14084d09a8d9023bcfa366c91c238ee201572697
+Author: Gilles Gouaillardet <gilles@rist.or.jp>
+Date:   Sun Jul 26 00:11:10 2020 +0900
+
+    update .gitignore
+    
+    ignore all files automatically generated for SVE support
+
+commit 867eaec14b15e06ef50b35e2e79f6be3dab00e04
+Author: Gilles Gouaillardet <gilles@rist.or.jp>
+Date:   Sun Jul 26 00:03:16 2020 +0900
+
+    automatically generate simd-support/vtw.h in bootstrap.sh
+    
+    and add simd-support/{generate_vtw.sh,vtw.h} into the dist tarball
+
+commit bfe9886c1b632ca7a25361627c364bf9b7f23983
+Author: Gilles Gouaillardet <gilles@rist.or.jp>
+Date:   Sun Jul 26 00:02:19 2020 +0900
+
+    simd/support/generate_vtw: fix include files for OSX
+
+commit 0a3490c382ba63accf4fe4abc1744c63ec6717cf
+Author: Romain Dolbeau <romain@dolbeau.org>
+Date:   Sat Jul 25 13:05:43 2020 +0200
+
+    Clean rebuild of the arm-sve-alt branch (at 3b1a5c7468af05f1ce20c3b48a82e0948d093dfe)
+
+commit 187045ea647ba19c55db5f503d11bd811ee6b56e
+Author: Steven G. Johnson <stevenj@alum.mit.edu>
+Date:   Mon Jun 3 15:30:11 2024 -0400
+
+    update for ocaml 5.x (fixes #356)
+
+commit cab901fe465324cb46bd4953e18ddc610ade29b9
+Author: Antonio Vazquez <antoniovazquezblanco@gmail.com>
+Date:   Mon May 6 14:16:46 2024 +0200
+
+    cmake: Fix compilation with VisualStudio clang-cl (#354)
+
+commit 394fa85ab5f8914b82b3404844444c53f5c7f095
+Author: tobim <tobim+github@fastmail.fm>
+Date:   Thu Apr 11 02:03:02 2024 +0200
+
+    Fix the cmake config file when configured with autotools (#338)
+    
+    When the autotools based build is used the FFTW3ConfigDeps.cmake file is
+    not generated, so including it fails with an error. By making the
+    include optional, the config file can still be used in a limited
+    fashion.
+
+commit 981f553dc276b6d73a49916d503068fdb928a9a3
+Author: BtbN <btbn@btbn.de>
+Date:   Fri Mar 22 16:10:38 2024 +0100
+
+    Include missing header for Win32 Threads check (#349)
+    
+    Recent compilers (mostly clang) just abort on implicit function declaration. So this check could never succeed there, since the proper header for the tested function was not included.
+
+commit d0ce926f1523d95daed48cd7c69572e068dbbfb3
+Author: Sevan Janiyan <venture37@geeklan.co.uk>
+Date:   Tue Dec 5 01:03:34 2023 +0000
+
+    Update autoconf m4 components (#326)
+    
+    * Import AX_CHECK_COMPILE_FLAG & AX_CHECK_LINK_FLAG
+    from autoconf-archive-2023.02.20.
+    
+    * Ditch AX_CHECK_COMPILER_FLAGS
+    AX_CHECK_COMPILER_FLAGS is unable to perform tests for linker
+    flags correctly, so the test always passes regardless of whether
+    they're supported. This breaks the build on legacy Darwin when
+    checking for -no_compact_unwind support with legacy toolchain.
+    By switching, the right sequence of support is detected when testing
+    among OS X Tiger (gcc 4.0.1), Leopard (gcc 4.2), Catalina (clang and gcc 12).
+    
+    * configure.ac: autoupdate
+    Update to the syntax of Autoconf 2.69
+    
+    * configure.ac: Use LT_INIT
+    'AC_PROG_RANLIB' is rendered obsolete by 'LT_INIT'
+    
+    * m4/Makefile.am: Update file list
+    
+    * m4/ax_cc_maxopt.m4: switch to AX_CHECK_COMPILE_FLAG
+    
+    * m4/ax_gcc_aligns_stack.m4: switch to AX_CHECK_COMPILE_FLAG
+
+commit 38ea230e25e69e7a3f35b957b815bac4f9aa22b0
+Merge: 69f6c1a6 21090e87
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Sat Aug 5 07:30:28 2023 -0400
+
+    Merge pull request #330 from luzpaz/typos
+    
+    Fix various typos
+
+commit 21090e87f42385cc9050d6296441d0fa02c6a3e0
+Author: luzpaz <luzpaz@users.noreply.github.com>
+Date:   Sat Aug 5 05:30:48 2023 -0400
+
+    Fix various typos
+    
+    Various typo fixes
+
+commit 69f6c1a6ebd7ac5af33e7074134fb79fbc729c3d
+Author: Steven G. Johnson <stevenj@mit.edu>
+Date:   Tue Jun 27 19:09:20 2023 -0400
+
+    add fftw_copy_plan (#314)
+    
+    * add fftw_copy_plan
+    
+    * tabs to spaces
+    
+    * doc clarification
+    
+    * typos
+
+commit 0842f00ae6b6e1f3aade155bc0edd17a7313fa6a
+Author: Steven G. Johnson <stevenj@mit.edu>
+Date:   Wed Apr 12 15:00:01 2023 -0400
+
+    sync version with  configure.ac
+    
+    Closes #323
+
+commit 11d93a81143ecb6c5ac7f67d7059bf11bd93ef35
+Merge: c277d556 a983a1f0
+Author: Matteo Frigo <athena@fftw.org>
+Date:   Thu Apr 6 20:28:12 2023 -0400
+
+    Merge pull request #322 from ryanvolz/cmake-simd-runtime-optional
+    
+    cmake: Set SIMD flags on appropriate source files only
+
+commit a983a1f01f216bb55aacb3ae5dccea4c03b58bc9
+Author: Ryan Volz <ryan.volz@gmail.com>
+Date:   Thu Apr 6 13:06:45 2023 -0400
+
+    cmake: Set SIMD flags on appropriate source files only.
+    
+    Doing this matches the behavior of the configure script and makefiles.
+    
+    Previously, enabling a set of SIMD instructions with the CMake build
+    would build the whole library with that flag enabled, allowing the
+    compiler to optimize by using that set of instructions anywhere. That
+    would then require that any SIMD instructions enabled at build time
+    would have to be present at run time. This change enables the intended
+    behavior of using SIMD instructions only when they are detected at run
+    time.
+
+commit c277d55689eef1616fa622b3bf6794af3a58e960
+Author: Steven G. Johnson <stevenj@mit.edu>
+Date:   Thu Mar 2 10:11:52 2023 -0500
+
+    rm obsolete reference to FFTW_DEBUG_MALLOC (removed in 62edb203fc09c8c8ac2c2d5ac3299ea8d4dc7838)
+
+commit 9426cd59106ffddde1f55131c07fa9c562fa2f8e
+Author: Ivan Panchenko <39594356+ivan-pan@users.noreply.github.com>
+Date:   Mon Sep 26 00:30:23 2022 +0200
+
+    Fix mistakes (#296)
+    
+    * Fix mistakes
+    
+    * Update annotate.ml
+    
+    * Update c.ml
+    
+    * Update number.ml
+
+commit 619564efbf84199f87e1a3047da00b600208fca2
+Author: Gilles Gouaillardet <ggouaillardet@users.noreply.github.com>
+Date:   Sat Jun 18 21:41:06 2022 +0900
+
+    updated test for whether CFLAGS was set by the user (#286)
+    
+    Refs. FFTW/fftw3#271
+
+commit 7188a4c7b142c92287b025b55753959a33a2901e
+Author: Steven G. Johnson <stevenj@mit.edu>
+Date:   Wed Feb 9 10:11:03 2022 -0500
+
+    updated test for whether CFLAGS was set by the user (#271)
+
+commit 7e92d55d49f13414317696c41137462135f6d6be
+Author: Steven G. Johnson <stevenj@mit.edu>
+Date:   Mon Jan 3 12:23:11 2022 -0500
+
+    default to CNTVCT_EL0 cycle counter on Apple M1 (#267)
+
+commit de86de58cfc0140dc512c1deb93d3df895c9e3f1
+Author: HinTak <htl10@users.sourceforge.net>
+Date:   Thu Dec 23 16:46:11 2021 +0000
+
+    Uses dlltool from GNU binutils to generate VC import libraries, and update README accordingly. (#135)
+    
+    zipping up the resulting import libraries also.
+    
+    This addresses some of the issues raised in https://github.com/FFTW/fftw3/issues/133 .
+
+commit 5ebbaaaac87ead8cf80a9106d31076768b3cd108
+Author: SpaceIm <30052553+SpaceIm@users.noreply.github.com>
+Date:   Thu Dec 23 17:43:35 2021 +0100
+
+    fix fortran api installation when not main project (#211)
+
+commit 80f5c5cf2a74835d101c38c54001a54de815c956
+Author: Steven G. Johnson <stevenj@alum.mit.edu>
+Date:   Thu Dec 23 11:35:31 2021 -0500
+
+    run AC_PROG_CPP explicitly, or else it doesn't always run with autoconf 2.71
+
 commit 7184fc796279cfa70e4ba62519ac2938054584e6
 Author: Matteo Frigo <athena@fftw.org>
 Date:   Tue Sep 14 10:41:20 2021 -0400

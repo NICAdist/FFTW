@@ -1,11 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual is for FFTW
-(version 3.3.10, 10 December 2020).
+(version 3.3.11, 18 April 2026).
 
-Copyright (C) 2003 Matteo Frigo.
+Copyright © 2003 Matteo Frigo.
 
-Copyright (C) 2003 Massachusetts Institute of Technology.
+Copyright © 2003 Massachusetts Institute of Technology.
 
 Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -20,38 +23,25 @@ Permission is granted to copy and distribute translations of this manual
 into another language, under the above conditions for modified versions,
 except that this permission notice may be stated in a translation
 approved by the Free Software Foundation. -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Other Important Topics (FFTW 3.3.10)</title>
+<title>Other Important Topics (FFTW 3.3.11)</title>
 
-<meta name="description" content="Other Important Topics (FFTW 3.3.10)">
-<meta name="keywords" content="Other Important Topics (FFTW 3.3.10)">
+<meta name="description" content="Other Important Topics (FFTW 3.3.11)">
+<meta name="keywords" content="Other Important Topics (FFTW 3.3.11)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Concept-Index.html" rel="index" title="Concept Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html" rel="up" title="Top">
-<link href="SIMD-alignment-and-fftw_005fmalloc.html" rel="next" title="SIMD alignment and fftw_malloc">
-<link href="The-Discrete-Hartley-Transform.html" rel="prev" title="The Discrete Hartley Transform">
+<link href="FFTW-Reference.html" rel="next" title="FFTW Reference">
+<link href="Tutorial.html" rel="prev" title="Tutorial">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 
@@ -59,23 +49,21 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Other-Important-Topics"></span><div class="header">
+<div class="chapter-level-extent" id="Other-Important-Topics">
+<div class="nav-panel">
 <p>
-Next: <a href="FFTW-Reference.html" accesskey="n" rel="next">FFTW Reference</a>, Previous: <a href="Tutorial.html" accesskey="p" rel="prev">Tutorial</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="FFTW-Reference.html" accesskey="n" rel="next">FFTW Reference</a>, Previous: <a href="Tutorial.html" accesskey="p" rel="prev">Tutorial</a>, Up: <a href="index.html" accesskey="u" rel="up">FFTW User Manual</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Other-Important-Topics-1"></span><h2 class="chapter">3 Other Important Topics</h2>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="SIMD-alignment-and-fftw_005fmalloc.html" accesskey="1">SIMD alignment and fftw_malloc</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Multi_002ddimensional-Array-Format.html" accesskey="2">Multi-dimensional Array Format</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Words-of-Wisdom_002dSaving-Plans.html" accesskey="3">Words of Wisdom-Saving Plans</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Caveats-in-Using-Wisdom.html" accesskey="4">Caveats in Using Wisdom</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
+<h2 class="chapter" id="Other-Important-Topics-1"><span>3 Other Important Topics<a class="copiable-link" href="#Other-Important-Topics-1"> &para;</a></span></h2>
 
+<ul class="mini-toc">
+<li><a href="SIMD-alignment-and-fftw_005fmalloc.html" accesskey="1">SIMD alignment and fftw_malloc</a></li>
+<li><a href="Multi_002ddimensional-Array-Format.html" accesskey="2">Multi-dimensional Array Format</a></li>
+<li><a href="Words-of-Wisdom_002dSaving-Plans.html" accesskey="3">Words of Wisdom&mdash;Saving Plans</a></li>
+<li><a href="Caveats-in-Using-Wisdom.html" accesskey="4">Caveats in Using Wisdom</a></li>
+</ul>
+</div>
 
 
 

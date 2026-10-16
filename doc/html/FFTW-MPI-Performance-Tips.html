@@ -1,11 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual is for FFTW
-(version 3.3.10, 10 December 2020).
+(version 3.3.11, 18 April 2026).
 
-Copyright (C) 2003 Matteo Frigo.
+Copyright © 2003 Matteo Frigo.
 
-Copyright (C) 2003 Massachusetts Institute of Technology.
+Copyright © 2003 Massachusetts Institute of Technology.
 
 Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -20,16 +23,15 @@ Permission is granted to copy and distribute translations of this manual
 into another language, under the above conditions for modified versions,
 except that this permission notice may be stated in a translation
 approved by the Free Software Foundation. -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>FFTW MPI Performance Tips (FFTW 3.3.10)</title>
+<title>FFTW MPI Performance Tips (FFTW 3.3.11)</title>
 
-<meta name="description" content="FFTW MPI Performance Tips (FFTW 3.3.10)">
-<meta name="keywords" content="FFTW MPI Performance Tips (FFTW 3.3.10)">
+<meta name="description" content="FFTW MPI Performance Tips (FFTW 3.3.11)">
+<meta name="keywords" content="FFTW MPI Performance Tips (FFTW 3.3.11)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Concept-Index.html" rel="index" title="Concept Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
@@ -38,20 +40,8 @@ approved by the Free Software Foundation. -->
 <link href="Avoiding-MPI-Deadlocks.html" rel="prev" title="Avoiding MPI Deadlocks">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 
@@ -59,12 +49,13 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="FFTW-MPI-Performance-Tips"></span><div class="header">
+<div class="section-level-extent" id="FFTW-MPI-Performance-Tips">
+<div class="nav-panel">
 <p>
 Next: <a href="Combining-MPI-and-Threads.html" accesskey="n" rel="next">Combining MPI and Threads</a>, Previous: <a href="Avoiding-MPI-Deadlocks.html" accesskey="p" rel="prev">Avoiding MPI Deadlocks</a>, Up: <a href="Distributed_002dmemory-FFTW-with-MPI.html" accesskey="u" rel="up">Distributed-memory FFTW with MPI</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="FFTW-MPI-Performance-Tips-1"></span><h3 class="section">6.10 FFTW MPI Performance Tips</h3>
+<h3 class="section" id="FFTW-MPI-Performance-Tips-1"><span>6.10 FFTW MPI Performance Tips<a class="copiable-link" href="#FFTW-MPI-Performance-Tips-1"> &para;</a></span></h3>
 
 <p>In this section, we collect a few tips on getting the best performance
 out of FFTW&rsquo;s MPI transforms.
@@ -73,22 +64,22 @@ out of FFTW&rsquo;s MPI transforms.
 currently limited by the size of the first dimension.
 (Multidimensional block distributions may be supported by a future
 version.) More generally, you should ideally arrange the dimensions so
-that FFTW can divide them equally among the processes. See <a href="Load-balancing.html">Load balancing</a>.
-<span id="index-block-distribution-2"></span>
-<span id="index-load-balancing-1"></span>
+that FFTW can divide them equally among the processes. See <a class="xref" href="Load-balancing.html">Load balancing</a>.
+<a class="index-entry-id" id="index-block-distribution-2"></a>
+<a class="index-entry-id" id="index-load-balancing-1"></a>
 </p>
 
 <p>Second, if it is not too inconvenient, you should consider working
 with transposed output for multidimensional plans, as this saves a
-considerable amount of communications.  See <a href="Transposed-distributions.html">Transposed distributions</a>.
-<span id="index-transpose-3"></span>
+considerable amount of communications.  See <a class="xref" href="Transposed-distributions.html">Transposed distributions</a>.
+<a class="index-entry-id" id="index-transpose-3"></a>
 </p>
 
 <p>Third, the fastest choices are generally either an in-place transform
-or an out-of-place transform with the <code>FFTW_DESTROY_INPUT</code> flag
+or an out-of-place transform with the <code class="code">FFTW_DESTROY_INPUT</code> flag
 (which allows the input array to be used as scratch space).  In-place
 is especially beneficial if the amount of data per process is large.
-<span id="index-FFTW_005fDESTROY_005fINPUT-1"></span>
+<a class="index-entry-id" id="index-FFTW_005fDESTROY_005fINPUT-1"></a>
 </p>
 
 <p>Fourth, if you have multiple arrays to transform at once, rather than
@@ -97,6 +88,7 @@ faster to interleave the data and use the advanced interface.  (This
 groups the communications together instead of requiring separate
 messages for each transform.)
 </p>
+</div>
 
 
 

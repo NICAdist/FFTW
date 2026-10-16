@@ -1,11 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual is for FFTW
-(version 3.3.10, 10 December 2020).
+(version 3.3.11, 18 April 2026).
 
-Copyright (C) 2003 Matteo Frigo.
+Copyright © 2003 Matteo Frigo.
 
-Copyright (C) 2003 Massachusetts Institute of Technology.
+Copyright © 2003 Massachusetts Institute of Technology.
 
 Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -20,16 +23,15 @@ Permission is granted to copy and distribute translations of this manual
 into another language, under the above conditions for modified versions,
 except that this permission notice may be stated in a translation
 approved by the Free Software Foundation. -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Load balancing (FFTW 3.3.10)</title>
+<title>Load balancing (FFTW 3.3.11)</title>
 
-<meta name="description" content="Load balancing (FFTW 3.3.10)">
-<meta name="keywords" content="Load balancing (FFTW 3.3.10)">
+<meta name="description" content="Load balancing (FFTW 3.3.11)">
+<meta name="keywords" content="Load balancing (FFTW 3.3.11)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Concept-Index.html" rel="index" title="Concept Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
@@ -38,20 +40,8 @@ approved by the Free Software Foundation. -->
 <link href="Basic-and-advanced-distribution-interfaces.html" rel="prev" title="Basic and advanced distribution interfaces">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 
@@ -59,15 +49,16 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Load-balancing"></span><div class="header">
+<div class="subsection-level-extent" id="Load-balancing">
+<div class="nav-panel">
 <p>
 Next: <a href="Transposed-distributions.html" accesskey="n" rel="next">Transposed distributions</a>, Previous: <a href="Basic-and-advanced-distribution-interfaces.html" accesskey="p" rel="prev">Basic and advanced distribution interfaces</a>, Up: <a href="MPI-Data-Distribution.html" accesskey="u" rel="up">MPI Data Distribution</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Load-balancing-1"></span><h4 class="subsection">6.4.2 Load balancing</h4>
-<span id="index-load-balancing"></span>
+<h4 class="subsection" id="Load-balancing-1"><span>6.4.2 Load balancing<a class="copiable-link" href="#Load-balancing-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-load-balancing"></a>
 
-<p>Ideally, when you parallelize a transform over some <em>P</em>
+<p>Ideally, when you parallelize a transform over some <em class="math">P</em>
 processes, each process should end up with work that takes equal time.
 Otherwise, all of the processes end up waiting on whichever process is
 slowest.  This goal is known as &ldquo;load balancing.&rdquo;  In this section,
@@ -84,17 +75,23 @@ processes run on hardware of comparable speed, and that the goal is
 therefore to divide the problem as equally as possible.
 </p>
 <p>For a multi-dimensional complex DFT, FFTW can divide the problem
-equally among the processes if: (i) the <em>first</em> dimension
-<code>n0</code> is divisible by <em>P</em>; and (ii), the <em>product</em> of
-the subsequent dimensions is divisible by <em>P</em>.  (For the advanced
+equally among the processes if: (i) the <em class="emph">first</em> dimension
+<code class="code">n0</code> is divisible by <em class="math">P</em>; and (ii), the <em class="emph">product</em> of
+the subsequent dimensions is divisible by <em class="math">P</em>.  (For the advanced
 interface, where you can specify multiple simultaneous transforms via
-some &ldquo;vector&rdquo; length <code>howmany</code>, a factor of <code>howmany</code> is
+some &ldquo;vector&rdquo; length <code class="code">howmany</code>, a factor of <code class="code">howmany</code> is
 included in the product of the subsequent dimensions.)
 </p>
-<p>For a one-dimensional complex DFT, the length <code>N</code> of the data
-should be divisible by <em>P</em> <em>squared</em> to be able to divide
+<p>For a one-dimensional complex DFT, the length <code class="code">N</code> of the data
+should be divisible by <em class="math">P</em> <em class="emph">squared</em> to be able to divide
 the problem equally among the processes.
 </p>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Transposed-distributions.html">Transposed distributions</a>, Previous: <a href="Basic-and-advanced-distribution-interfaces.html">Basic and advanced distribution interfaces</a>, Up: <a href="MPI-Data-Distribution.html">MPI Data Distribution</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

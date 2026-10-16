@@ -467,6 +467,11 @@
       real(16), dimension(*), intent(out) :: out
     end subroutine fftwq_execute_r2r
     
+    type(C_PTR) function fftwq_copy_plan(p) bind(C, name='fftwq_copy_plan')
+      import
+      type(C_PTR), value :: p
+    end function fftwq_copy_plan
+    
     subroutine fftwq_destroy_plan(p) bind(C, name='fftwq_destroy_plan')
       import
       type(C_PTR), value :: p
